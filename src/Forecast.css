@@ -28,4 +28,10 @@
   height: 32px;
   margin: 0 auto;
 }
+.units-forecast {
+  font-size: 10px;
+  margin-left: 1px;
+  position:relative;
+  top:-6px;
+}
 

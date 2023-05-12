@@ -13,7 +13,9 @@ export default function Forecast() {
             id="icon"
           />
         </li>
-        <li>19°C</li>
+        <li>
+          19<span className="units-forecast">°C</span>
+        </li>
       </ul>
       <ul className="daily-forecast">
         <li>Tue</li>
@@ -25,7 +27,9 @@ export default function Forecast() {
             id="icon"
           />
         </li>
-        <li>19°C</li>
+        <li>
+          19<span className="units-forecast">°C</span>
+        </li>
       </ul>
       <ul className="daily-forecast">
         <li>Wed</li>
@@ -37,7 +41,9 @@ export default function Forecast() {
             id="icon"
           />
         </li>
-        <li>19°C</li>
+        <li>
+          19<span className="units-forecast">°C</span>
+        </li>
       </ul>
       <ul className="daily-forecast">
         <li>Thu</li>
@@ -49,7 +55,9 @@ export default function Forecast() {
             id="icon"
           />
         </li>
-        <li>19°C</li>
+        <li>
+          19<span className="units-forecast">°C</span>
+        </li>
       </ul>
       <ul className="daily-forecast">
         <li>Fri</li>
@@ -61,7 +69,9 @@ export default function Forecast() {
             id="icon"
           />
         </li>
-        <li>19°C</li>
+        <li>
+          19<span className="units-forecast">°C</span>
+        </li>
       </ul>
     </div>
   );
