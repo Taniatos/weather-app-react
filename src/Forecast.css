@@ -1,0 +1,31 @@
+:root {
+  --white: #f3f8fe;
+  --black: #332926;
+}
+.Forecast-container {
+  background: rgba(255, 251, 251, 0.6);
+  backdrop-filter: blur(2px);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+.daily-forecast {
+  list-style: none;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black);
+  display: block;
+  margin-bottom: 0px;
+  padding: 0;
+
+}
+.icon-forecast {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+}
+
