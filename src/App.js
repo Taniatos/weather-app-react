@@ -37,10 +37,10 @@ export default function App() {
         <Forecast />
         <div className="other-cities">
           <p>
-            Check out weather in <a href="#">Boston</a>
-            <a href="#">Seattle</a>
-            <a href="#">Chicago</a>
-            <a href="#">Houston</a>
+            Check out weather in <a href="https://www.google.com/">Boston</a>
+            <a href="https://www.google.com/">Seattle</a>
+            <a href="https://www.google.com/">Chicago</a>
+            <a href="https://www.google.com/">Houston</a>
           </p>
         </div>
         <p className="footer">
