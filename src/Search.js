@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
 import Forecast from "./Forecast";
+import Weather from "./Weather";
 
 import axios from "axios";
 export default function Seacrh(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const[city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -17,19 +19,34 @@ export default function Seacrh(props) {
       wind: Math.round(response.data.wind.speed),
     });
   }
+  function search() {
+    const apiKey = "0d8a45bc34b38f19a974t8f13fco40ba";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
   if (weatherData.ready) {
     return (
       <div className="App">
         <div className="container">
           <h1>Your Weather App</h1>
           <div className="Search">
-            <form>
+            <form onSubmit={handleSubmit}>
               <input
                 type="search"
                 className="search-city"
-                id="city-input"
                 placeholder="Enter your city..."
                 autocomplete="off"
+                autoFocus="on"
+                onChange={handleCityChange}
               />
               <input
                 type="submit"
@@ -39,34 +56,7 @@ export default function Seacrh(props) {
               />
             </form>
           </div>
-          <div className="city-name grid">
-            <img
-              src={weatherData.iconUrl}
-              alt={weatherData.description}
-              className="icon-weather"
-              id="icon"
-            />
-            <h2>{weatherData.city}</h2>
-          </div>
-          <div className="city-description grid">
-            <ul className="description-list">
-              <li>{weatherData.date}</li>
-              <li>
-                {weatherData.description.charAt(0).toUpperCase() +
-                  weatherData.description.slice(1)}
-              </li>
-              <li>Humidity: {weatherData.humidity} %</li>
-              <li>Wind: {weatherData.wind} km/h</li>
-            </ul>
-            <div className="temperature-display grid">
-              <ul className="temperature-list">
-                <li className="degree">{weatherData.temperature}</li>
-                <li className="cels-fahr">
-                  <span className="in-celsius">°C</span> | °F
-                </li>
-              </ul>
-            </div>
-          </div>
+          <Weather data={weatherData} />;
           <Forecast />
           <div className="other-cities">
             <p>
@@ -84,10 +74,9 @@ export default function Seacrh(props) {
         </div>
       </div>
     );
+    
   } else {
-    const apiKey = "0d8a45bc34b38f19a974t8f13fco40ba";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}`;
-    axios.get(apiUrl).then(handleResponse);
+    search();
     return "Loading ...";
   }
 }
