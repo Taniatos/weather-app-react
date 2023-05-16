@@ -103,9 +103,18 @@ li {
   line-height: 120%;
   color: #64685f;
 }
-.in-celsius {
+.current {
   color: #2c3027;
   font-size: 40px;
+  font-weight: 600;
+  
+}
+.toClick a{
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #64685f;
+  text-decoration: none;
 }
 .other-cities {
   color: var(--white);

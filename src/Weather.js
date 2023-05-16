@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-
+import WeatherTemperature from "./WeatherTemperature"
 
 export default function Weather(props) {
   return (
@@ -24,13 +24,10 @@ export default function Weather(props) {
           <li>Humidity: {props.data.humidity} %</li>
           <li>Wind: {props.data.wind} km/h</li>
         </ul>
+
         <div className="temperature-display grid">
-          <ul className="temperature-list">
-            <li className="degree">{props.data.temperature}</li>
-            <li className="cels-fahr">
-              <span className="in-celsius">°C</span> | °F
-            </li>
-          </ul>
+          <WeatherTemperature degree={props.data.temperature} />
+          
         </div>
       </div>
     </div>
