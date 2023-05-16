@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import WeatherTemperature from "./WeatherTemperature"
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   return (
@@ -16,7 +17,7 @@ export default function Weather(props) {
       </div>
       <div className="city-description grid">
         <ul className="description-list">
-          <li>{props.data.date}</li>
+          <li><FormattedDate date={props.data.date}/></li>
           <li>
             {props.data.description.charAt(0).toUpperCase() +
               props.data.description.slice(1)}

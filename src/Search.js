@@ -12,7 +12,7 @@ export default function Seacrh(props) {
       ready: true,
       temperature: Math.round(response.data.temperature.current),
       city: response.data.city,
-      date: "Thursday 12:30",
+      date: new Date (response.data.time * 1000),
       iconUrl: response.data.condition.icon_url,
       description: response.data.condition.description,
       humidity: Math.round(response.data.temperature.humidity),
