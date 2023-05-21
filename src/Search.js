@@ -58,14 +58,6 @@ export default function Seacrh(props) {
           </div>
           <Weather data={weatherData} />
           <Forecast city={weatherData.city} />
-          <div className="other-cities">
-            <p>
-              Check out weather in <a href="https://www.google.com/">Boston</a>
-              <a href="https://www.google.com/">Seattle</a>
-              <a href="https://www.google.com/">Chicago</a>
-              <a href="https://www.google.com/">Houston</a>
-            </p>
-          </div>
           <div className="footer">
             <p>
               Open-sourced{" "}
