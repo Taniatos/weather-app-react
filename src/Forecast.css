@@ -24,14 +24,30 @@
 
 }
 .icon-forecast {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   margin: 0 auto;
+ 
 }
-.units-forecast {
+.max-temperature {
+  font-weight: 600;
+}
+.min-temperature {
+  font-weight: 300;
+  color: #3d5245;
+}
+.units-forecast-max {
   font-size: 10px;
   margin-left: 1px;
   position:relative;
   top:-6px;
+}
+.units-forecast-min {
+  font-size: 10px;
+  margin-left: 1px;
+  position:relative;
+  top:-6px;
+  font-weight: 300;
+  color: #3d5245;
 }
 

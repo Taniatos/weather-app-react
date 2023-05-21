@@ -56,8 +56,8 @@ export default function Seacrh(props) {
               />
             </form>
           </div>
-          <Weather data={weatherData} />;
-          <Forecast />
+          <Weather data={weatherData} />
+          <Forecast city={weatherData.city} />
           <div className="other-cities">
             <p>
               Check out weather in <a href="https://www.google.com/">Boston</a>
@@ -66,11 +66,15 @@ export default function Seacrh(props) {
               <a href="https://www.google.com/">Houston</a>
             </p>
           </div>
-          <p className="footer">
-            Open-sourced{" "}
-            <a href="https://github.com/Taniatos/weather-app-react.git">code</a>{" "}
-            by Tetiana Korchynska
-          </p>
+          <div className="footer">
+            <p>
+              Open-sourced{" "}
+              <a href="https://github.com/Taniatos/weather-app-react.git">
+                code
+              </a>{" "}
+              by Tetiana Korchynska
+            </p>
+          </div>
         </div>
       </div>
     );

@@ -1,78 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Forecast.css";
-export default function Forecast() {
-  return (
-    <div className="Forecast-container grid">
-      <ul className="daily-forecast">
-        <li>Mon</li>
-        <li>
-          <img
-            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/081/519/original/Frame_19.png?1683850655"
-            alt="icon"
-            className="icon-forecast"
-            id="icon"
-          />
-        </li>
-        <li>
-          19<span className="units-forecast">°C</span>
-        </li>
-      </ul>
-      <ul className="daily-forecast">
-        <li>Tue</li>
-        <li>
-          <img
-            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/081/519/original/Frame_19.png?1683850655"
-            alt="icon"
-            className="icon-forecast"
-            id="icon"
-          />
-        </li>
-        <li>
-          19<span className="units-forecast">°C</span>
-        </li>
-      </ul>
-      <ul className="daily-forecast">
-        <li>Wed</li>
-        <li>
-          <img
-            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/081/519/original/Frame_19.png?1683850655"
-            alt="icon"
-            className="icon-forecast"
-            id="icon"
-          />
-        </li>
-        <li>
-          19<span className="units-forecast">°C</span>
-        </li>
-      </ul>
-      <ul className="daily-forecast">
-        <li>Thu</li>
-        <li>
-          <img
-            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/081/519/original/Frame_19.png?1683850655"
-            alt="icon"
-            className="icon-forecast"
-            id="icon"
-          />
-        </li>
-        <li>
-          19<span className="units-forecast">°C</span>
-        </li>
-      </ul>
-      <ul className="daily-forecast">
-        <li>Fri</li>
-        <li>
-          <img
-            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/081/519/original/Frame_19.png?1683850655"
-            alt="icon"
-            className="icon-forecast"
-            id="icon"
-          />
-        </li>
-        <li>
-          19<span className="units-forecast">°C</span>
-        </li>
-      </ul>
-    </div>
-  );
+import WeatherForecastDay from "./WeatherForecastDay";
+import axios from "axios";
+export default function Forecast(props) {
+  let [loaded, setLoaded] = useState(false);
+  let [forecast, setForecast] = useState(false);
+  function handleResponse(response) {
+    setForecast(response.data.daily);
+    setLoaded(true);
+  }
+
+  if (loaded) {
+    return (
+      <div className="Forecast-container grid">
+        {forecast.map(function (dailyForecast, index) {
+          if (index < 5) {
+            return <WeatherForecastDay data={dailyForecast} />;
+          }
+        })}
+      </div>
+    );
+  } else {
+    let apiKey = "0d8a45bc34b38f19a974t8f13fco40ba";
+    let city = props.city;
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
+    return null;
+  }
 }
